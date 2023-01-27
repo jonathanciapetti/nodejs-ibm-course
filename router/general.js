@@ -46,10 +46,12 @@ public_users.get('/', async function (req, res) {
 // Get book details based on ISBN, using a Promise:
 public_users.get('/isbn/:isbn', function (req, res) {
   const isbn = req.params.isbn;
+  let book = null;
+
   for (let k of Object.keys(books)) {
     for (let kk of Object.keys(books[k])) {
       if (kk === 'isbn' && books[k][kk] === isbn) {
-        return res.status(200).json({ book: books[k] });
+        book = books[k];
       }
     }
   }
