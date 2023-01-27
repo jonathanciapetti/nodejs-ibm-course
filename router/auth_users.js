@@ -15,7 +15,7 @@ const isValid = (username)=>{
 }
 
 const doesExist = (username) => {
-  return users.users.some(user => username === user.username)
+  return users.some(user => username === user.username)
 }
 
 const authenticatedUser = (username,password)=>{

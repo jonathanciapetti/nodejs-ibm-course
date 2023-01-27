@@ -6,13 +6,14 @@ const public_users = express.Router();
 
 
 public_users.post("/register", (req, res) => {
+  const username = req.body.username;
   const password = req.body.password;
 
-  if (req.body.username && password) {
+  if (username && password) {
 
-    if (!auth_users.doesExist(req.body.username)) {
+    if (!auth_users.doesExist(username)) {
       users.users.push({
-        "username": req.body.username,
+        "username": username,
         "password": password
       });
       return res.status(200).json({
